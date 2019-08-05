@@ -2,7 +2,7 @@ package day3.inheritance;
 
 public class TestInheritance {
 
-    static class A{
+    static class A {
         public A() {
             System.out.println("Klasa A");
         }
@@ -12,7 +12,7 @@ public class TestInheritance {
         }
     }
 
-    static class B extends A{
+    static class B extends A {
         public B() {
             System.out.println("Klasa B");
         }

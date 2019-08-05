@@ -1,3 +1,5 @@
+package day3;
+
 import day3.Kalkulator;
 
 public class TestKalkulator {
