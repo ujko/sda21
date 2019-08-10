@@ -1,6 +1,8 @@
 package day4.addressBook.model;
 
-public class Phone {
+import java.io.Serializable;
+
+public class Phone implements Serializable {
     private String phoneNumber;
     private PhoneType phoneType;
 

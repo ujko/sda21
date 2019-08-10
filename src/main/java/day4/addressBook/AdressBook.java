@@ -1,17 +1,25 @@
 package day4.addressBook;
 
 import day4.addressBook.DAO.PersonDAO;
+import day4.addressBook.DAO.PersonDAOFile;
 import day4.addressBook.DAO.PersonDAOMem;
 import day4.addressBook.model.Address;
 import day4.addressBook.model.Person;
 import day4.addressBook.model.Phone;
 import day4.addressBook.model.PhoneType;
+import day5.IOTest;
 
+import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 
 public class AdressBook {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFileException {
+        Person[] persons = (Person[])IOTest.odczytajObject();
+        System.out.println(Arrays.toString(persons));
+    }
+
+    private static void test() {
         Address a = new Address();
         a.setCity("Lodz");
         a.setPostCode("60-219");
@@ -58,7 +66,5 @@ public class AdressBook {
         System.out.println("************************************");
         dao.deletePerson(1);
         System.out.println(Arrays.toString(dao.getAllPersons()));
-
-
     }
 }
