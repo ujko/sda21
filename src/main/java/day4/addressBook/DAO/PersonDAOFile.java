@@ -3,6 +3,7 @@ package day4.addressBook.DAO;
 import day4.addressBook.model.Person;
 import day5.IOTest;
 
+import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 
@@ -11,8 +12,8 @@ public class PersonDAOFile implements PersonDAO {
 
     public PersonDAOFile() {
         try {
-            persons = (Person[])IOTest.odczytajObject();
-        }catch (NoSuchFileException e) {
+            persons = (Person[]) IOTest.odczytajObject();
+        } catch(Exception e) {
             persons = new Person[0];
             IOTest.zapiszObiekt(persons);
         }
@@ -52,8 +53,8 @@ public class PersonDAOFile implements PersonDAO {
     }
 
     private Person[] increasePerson(Person[] p, Person newPerson) {
-        Person[] t = Arrays.copyOf(p, p.length +1);
-        t[t.length-1] = newPerson;
+        Person[] t = Arrays.copyOf(p, p.length + 1);
+        t[t.length - 1] = newPerson;
         return t;
     }
 

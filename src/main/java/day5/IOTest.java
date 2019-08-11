@@ -83,7 +83,7 @@ public class IOTest {
         Properties properties = new Properties();
         properties.setProperty("imie", ustawienia.getName());
         properties.setProperty("nazwisko", ustawienia.getLastName());
-        try (OutputStream os = new FileOutputStream(PLIK_KONFIGURACYJNY)){
+        try (OutputStream os = new FileOutputStream(PLIK_KONFIGURACYJNY)) {
             properties.store(os, "Nasz komentarz");
         } catch (Exception e) {
             e.printStackTrace();
@@ -93,7 +93,7 @@ public class IOTest {
 
     public static Ustawienia odczytajKonfiguracje() {
         Ustawienia ustawienia = new Ustawienia();
-        try (InputStream is = new FileInputStream(PLIK_KONFIGURACYJNY)){
+        try (InputStream is = new FileInputStream(PLIK_KONFIGURACYJNY)) {
             Properties p = new Properties();
             p.load(is);
             ustawienia.setName(p.getProperty("imie"));
@@ -105,7 +105,7 @@ public class IOTest {
     }
 
     public static void zapiszObiekt(Object object) {
-        try (OutputStream os = new FileOutputStream(PLIK_OBIEKT)){
+        try (OutputStream os = new FileOutputStream(PLIK_OBIEKT)) {
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(object);
         } catch (Exception e) {
@@ -114,20 +114,18 @@ public class IOTest {
     }
 
 
-    public static Object odczytajObject() throws NoSuchFileException {
-        Object object = null;
-        try (InputStream is = new FileInputStream(PLIK_OBIEKT)){
-            ObjectInputStream ois = new ObjectInputStream(is);
-            object = ois.readObject();
-        } catch (Exception e) {
-            throw new NoSuchFileException("Brak pliku");
-        }
+    public static Object odczytajObject() throws IOException, ClassNotFoundException {
+        InputStream is = new FileInputStream(PLIK_OBIEKT);
+        ObjectInputStream ois = new ObjectInputStream(is);
+        Object object = ois.readObject();
+        is.close();
+        ois.close();
         return object;
     }
 
 
     public static <T> void zapiszObiektGeneric(T t) {
-        try (OutputStream os = new FileOutputStream(PLIK_OBIEKT)){
+        try (OutputStream os = new FileOutputStream(PLIK_OBIEKT)) {
             ObjectOutputStream oos = new ObjectOutputStream(os);
             oos.writeObject(t);
         } catch (Exception e) {
@@ -138,9 +136,9 @@ public class IOTest {
 
     public static <T> T odczytajObjectGeneric() throws NoSuchFileException {
         T object = null;
-        try (InputStream is = new FileInputStream(PLIK_OBIEKT)){
+        try (InputStream is = new FileInputStream(PLIK_OBIEKT)) {
             ObjectInputStream ois = new ObjectInputStream(is);
-            object = (T)ois.readObject();
+            object = (T) ois.readObject();
         } catch (Exception e) {
             throw new NoSuchFileException("Brak pliku");
         }

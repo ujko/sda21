@@ -9,12 +9,13 @@ import day4.addressBook.model.Phone;
 import day4.addressBook.model.PhoneType;
 import day5.IOTest;
 
+import java.io.IOException;
 import java.nio.file.NoSuchFileException;
 import java.util.Arrays;
 
 public class AdressBook {
 
-    public static void main(String[] args) throws NoSuchFileException {
+    public static void main(String[] args) throws IOException, ClassNotFoundException {
         Person[] persons = (Person[])IOTest.odczytajObject();
         System.out.println(Arrays.toString(persons));
     }
