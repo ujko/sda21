@@ -2,7 +2,7 @@ package day6;
 
 public class Palindrom {
     public static void main(String[] args) {
-        System.out.println(czyPalindrom2("Eva, can I see bees in a cave?"));
+        System.out.println(czyPalindrom2(args[0]));
     }
 
     private static boolean czyPalindrom (String slowo) {
